@@ -1,20 +1,27 @@
 body {
   background-color: #f9f9f9;
-  display: flex;
+  margin: 0px;
+  padding: 0px;
 }
 
 .container {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 50px;
+  width: 100%;
 }
+
 .buttonInformation {
   display: block;
-  justify-content: flex-end;
   margin-top: 10px;
-  margin-right: 20px;
+  margin-left: 50px;
+  width: 50%;
+
+}
+
+.personalInformation {
+  text-align: center;
+  color: darkslategray;
+  font-family:Arial, Helvetica, sans-serif;
+  width: 50%;
 }
 
 .formacion, .experienciaProfesional, .objetivosProfesionales, .otros {
@@ -29,8 +36,10 @@ body {
   border: solid white;
 }
 
-.formacion:hover {
-  box-shadow: inset 0 0 0 1px, #f9f9f9;
+.formacion:hover, .experienciaProfesional:hover, .objetivosProfesionales:hover, .otros:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 16px darkslategray;
+  transition: all 0.2s ease;
 }
 
 .contacto {
@@ -44,12 +53,9 @@ body {
 }
 .contacto:hover {
   box-shadow: inset 0 0 0 1px darkslategray;
+  border-radius: 4px;
   }
 
-.personalInformation {
-  text-align: center;
-  color: darkslategray;
-  font-family:Arial, Helvetica, sans-serif;
-}
+
 
 
