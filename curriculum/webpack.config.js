@@ -9,7 +9,7 @@ module.exports = {
   },
   devtool: "eval-source-map",
   entry: {
-    app: ["./index.tsx"],
+    app: ["./index.tsx", "./img/imagen.css"],
   },
   stats: "errors-only",
   output: {

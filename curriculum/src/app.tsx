@@ -5,12 +5,16 @@ import {PaginaExperiencia} from "./vistas/experiencia"
 import {PaginaFormacion} from "./vistas/formacion";
 import {PaginaHabilidades} from "./vistas/habilidades";
 import {PaginaContacto} from "./vistas/contacto";
+import {PaginaInfoGeneral} from "./vistas/infoGeneral";
 
 export const App = () => {
     return (
         <HashRouter>
             <Switch>
                 <Route exact path="/">
+                    <PaginaInfoGeneral/>
+                </Route>
+                <Route path="/sobreMi">
                     <PaginaSobreMi/>
                 </Route>
                 <Route path="/formacion">
@@ -29,3 +33,8 @@ export const App = () => {
         </HashRouter>
     )
 };
+
+
+
+
+
