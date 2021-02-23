@@ -9,32 +9,29 @@ module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
   },
-  devtool: "eval-source-map",
   entry: {
     app: "./index.tsx", 
   },
-  stats: "errors-only",
   output: {
     filename: "[name].[chunkhash].js",
     path: path.resolve(process.cwd(), "dist"),
+    publicPath: "./",
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"
-        ],
-      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
       {
-        test: /\.(png|jpg)$/,
-        exclude: /node_modules/,
-        loader: "url-loader?limit=5000",
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"
+        ],
+      },
+      {        
+        test: /\.(png|jpg)$/,        
+        type: "asset/resource",      
       },
       {
         test: /\.html$/,
@@ -42,17 +39,25 @@ module.exports = {
       },
     ],
   },
+  devtool: "eval-source-map",
+  devServer: {    
+          port: 8080,  
+          stats: "errors-only",  
+        },
   plugins: [
     //Generate index.html in /dist => https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: "index.html", //Name of file in ./dist/
       template: "index.html", //Name of template in ./src
     }),
+
+    new CleanWebpackPlugin(),
+
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new CleanWebpackPlugin(),
+    
 
   ],
 };
