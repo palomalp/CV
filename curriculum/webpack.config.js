@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const basePath = __dirname;
 
@@ -9,14 +11,21 @@ module.exports = {
   },
   devtool: "eval-source-map",
   entry: {
-    app: ["./index.tsx", "./img/imagen.css"],
+    app: "./index.tsx", 
   },
   stats: "errors-only",
   output: {
     filename: "[name].[chunkhash].js",
+    path: path.resolve(process.cwd(), "dist"),
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"
+        ],
+      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -39,5 +48,11 @@ module.exports = {
       filename: "index.html", //Name of file in ./dist/
       template: "index.html", //Name of template in ./src
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+    new CleanWebpackPlugin(),
+
   ],
 };

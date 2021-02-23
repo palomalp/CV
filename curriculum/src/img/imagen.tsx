@@ -1,10 +1,12 @@
 import React from "react";
-import "./imagen.css";
+// import "./stylesImage.css";
+const classes= require("./stylesImage.css");
+const img= require("./myphoto.jpg");
 
 export const AvatarImage: React.FC = () => {
     return (
-        <div className="imagenPerfil">
-            <img src="./myphoto.jpg" alt=""/>
+        <div>
+            <img className={classes.imagenPerfil} src={img} alt=""/>
         </div>
     )
 }
