@@ -8,8 +8,6 @@ import Divider from '@material-ui/core/Divider';
 import PaginaSobreMi from "../componentes/formatoPag"
 import {AvatarImage} from "../img/imagen";
 
-
-
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -48,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 1000,
+    height: 700,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -82,33 +80,27 @@ export default function VerticalTabs() {
 
         
         {/* <div><Link to="/sobreMi">Sobre mí</Link></div>
+        <Tab component={Link} label="Sobre mí" to="/sobreMi" {...a11yProps(0)} />
         <div><Link to="/formacion">Formación</Link></div>
         <div><Link to="/experiencia">Experiencia</Link></div>
         <div><Link to="/habilidades">Habilidades</Link></div>
-        <div><Link to="/contacto">Contacto</Link></div> */} */}
-
+        <div><Link to="/contacto">Contacto</Link></div> */}
 
       </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+          <PaginaSobreMi/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        Item Two
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        Item Three
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        Item Four
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        Item Five
       </TabPanel>
     </div>
   );
