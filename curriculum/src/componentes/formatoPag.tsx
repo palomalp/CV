@@ -1,108 +1,115 @@
-// import React from 'react';
-// import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-// import Drawer from '@material-ui/core/Drawer';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import List from '@material-ui/core/List';
-// import Typography from '@material-ui/core/Typography';
-// import Divider from '@material-ui/core/Divider';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
-// import {AvatarImage} from "../img/imagen";
-
-// //formato general de la página:
-// const DrawerWidth = 240;
-
-// const UseStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     root: {
-//       display: 'flex',
-//     },
-//     appBar: {
-//       width: `calc(100% - ${DrawerWidth}px)`,
-//       marginLeft: DrawerWidth,
-//     },
-//     drawer: {
-//       width: DrawerWidth,
-//       flexShrink: 0,
-//     },
-//     drawerPaper: {
-//       width: DrawerWidth,
-//     },
-//     // necessary for content to be below app bar
-//     toolbar: theme.mixins.toolbar,
-//     content: {
-//       flexGrow: 1,
-//       backgroundColor: theme.palette.background.default,
-//       padding: theme.spacing(3),
-//     },
-//   }),
-// );
+import React from 'react';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
+import PaginaSobreMi from "../componentes/formatoPag"
+import {AvatarImage} from "../img/imagen";
 
 
-// export default function PermanentDrawerLeft() {
-//   const classes = UseStyles();
 
-//   return (
-//     <div className={classes.root}>
-//       <CssBaseline />
-//       {/* <AppBar position="fixed" className={classes.appBar}> */}
-//         {/* <Toolbar>
-//           {/* <Typography variant="h6" noWrap>
-//             Permanent drawer
-//           </Typography> */}
-//         {/* </Toolbar> */} 
-//       {/* </AppBar> */}
-//       <Drawer
-//         className={classes.drawer}
-//         variant="permanent"
-//         classes={{
-//           paper: classes.drawerPaper,
-//         }}
-//         anchor="left"
-//       >
-//         <Toolbar>
-//             <div><p>Paloma Ledesma Peña</p></div>
-//             <div><AvatarImage/></div>
-//         </Toolbar>
-//         <Divider />
-//         <List>
-//           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-//             <ListItem button key={text}>
-//               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-//               <ListItemText primary={text} />
-//             </ListItem>
-//           ))}
-//         </List>
-//         <Divider />
-//         <List>
-//           {['All mail', 'Trash', 'Spam'].map((text, index) => (
-//             <ListItem button key={text}>
-//               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-//               <ListItemText primary={text} />
-//             </ListItem>
-//           ))}
-//         </List>
-//       </Drawer>
-//       <main className={classes.content}>
-//         <div className={classes.toolbar} />
-//         <Typography paragraph>
-//           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-//           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-//           facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-//           gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-//           donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-//           adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-//           Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-//           imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-//           arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-//           donec massa sapien faucibus et molestie ac.
-//         </Typography>
-//       </main>
-//     </div>
-//   );
-// }
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: any;
+  value: any;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: any) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    height: 1000,
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
+}));
+
+export default function VerticalTabs() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div className={classes.root}>
+      <Tabs
+        orientation="vertical"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        className={classes.tabs}
+      >
+        <h2>Paloma Ledesma Peña</h2>
+        <div><AvatarImage/></div>
+        <Tab label="Sobre mí" {...a11yProps(0)} />
+        <Tab label="Formación" {...a11yProps(1)} />
+        <Tab label="Experiencia" {...a11yProps(2)} />
+        <Tab label="Habilidades" {...a11yProps(3)} />
+        <Tab label="Contacto" {...a11yProps(4)} />
+
+        
+        {/* <div><Link to="/sobreMi">Sobre mí</Link></div>
+        <div><Link to="/formacion">Formación</Link></div>
+        <div><Link to="/experiencia">Experiencia</Link></div>
+        <div><Link to="/habilidades">Habilidades</Link></div>
+        <div><Link to="/contacto">Contacto</Link></div> */} */}
+
+
+      </Tabs>
+      <TabPanel value={value} index={0}>
+        Item One
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Item Four
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        Item Five
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        Item Six
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        Item Seven
+      </TabPanel>
+    </div>
+  );
+}

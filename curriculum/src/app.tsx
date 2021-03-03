@@ -6,14 +6,14 @@ import {PaginaFormacion} from "./vistas/formacion";
 import {PaginaHabilidades} from "./vistas/habilidades";
 import {PaginaContacto} from "./vistas/contacto";
 import {PaginaInfoGeneral} from "./vistas/infoGeneral";
-import {AvatarImage} from "./img/imagen";
+// import {AvatarImage} from "./img/imagen";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <h2>Paloma Ledesma Peña</h2>
-        <div><AvatarImage/></div>
+        {/* <h2>Paloma Ledesma Peña</h2>
+        <div><AvatarImage/></div> */}
         <div><Link to="/sobreMi">Sobre mí</Link></div>
         <div><Link to="/formacion">Formación</Link></div>
         <div><Link to="/experiencia">Experiencia</Link></div>

@@ -1,6 +1,4 @@
 import React from "react";
-import  {Link} from "react-router-dom";
-import {AvatarImage} from "../img/imagen";
 
 // export const PaginaInfoGeneral: React.FC = () => {
 //     return (
