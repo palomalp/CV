@@ -5,23 +5,17 @@ import {PaginaExperiencia} from "./vistas/experiencia"
 import {PaginaFormacion} from "./vistas/formacion";
 import {PaginaHabilidades} from "./vistas/habilidades";
 import {PaginaContacto} from "./vistas/contacto";
-import {PaginaInfoGeneral} from "./vistas/infoGeneral";
+// import {PaginaInfoGeneral} from "./vistas/infoGeneral";
+import {FormatoPag} from "./componentes/formatoPag";
 // import {AvatarImage} from "./img/imagen";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <div>
-        {/* <h2>Paloma Ledesma Peña</h2>
-        <div><AvatarImage/></div> */}
-        <div><Link to="/sobreMi">Sobre mí</Link></div>
-        <div><Link to="/formacion">Formación</Link></div>
-        <div><Link to="/experiencia">Experiencia</Link></div>
-        <div><Link to="/habilidades">Habilidades</Link></div>
-        <div><Link to="/contacto">Contacto</Link></div>
       <Switch>
         <Route exact path ="/">
-          <PaginaInfoGeneral/>
+          <FormatoPag/>
         </Route>
         <Route path="/sobreMi">
           <PaginaSobreMi/>

@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {App} from "./app";
-import VerticalTabs from "./componentes/formatoPag"
+import {FormatoPag} from "./componentes/formatoPag"
 // import PermanentDrawerLeft from "./componentes/formatoPag";
 
 ReactDOM.render(
   <div>
     <App />
-    <VerticalTabs/>
+    {/* <FormatoPag /> */}
   </div>,
   document.getElementById("root")
 );
